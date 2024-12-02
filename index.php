@@ -68,6 +68,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </label>
             </fieldset>
             
+            <label for="numItem">Number of Items: </label>
+            <input type="number" name="numitem" id="numitem" placeholder="e.g., 10" required>
+
+            <label for="max">Max Difference of Choices from the Correct Answer: </label>
+            <input type="number" name="maxnum" id="max" placeholder="e.g., 10" required>
+
+            <button type="submit"> Start Quiz</button>
         </form>
     </div>
 </body>
