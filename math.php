@@ -49,5 +49,30 @@ switch ($operator) {
     $symbol = '?';
 }
 
+$choices = [$correctAnswer];
+while (count($choices) < 4) {
+    $choice = $correctAnswer + rand(-$maxNum, $maxNum);
+    if (!in_array($choice, $choices) && $choice >= 0) {
+        $choices[] = $choice;
+    }
+}
+shuffle($choices);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['answer']) && isset ($_POST['correctAnswer'])) {
+        if (intval($_POST['answer']) === intval($_POST['correctAnswer'])) {
+            $_SESSION['correct'] ++;
+        } else {
+            $_SESSION['wrong'] ++;
+        }
+    }
+    $_SESSION['currentQuestion']++;
+    if ($_SESSION['currentQuestion'] > $numItems) {
+        header("Location: end.php");
+        exit();
+    }
+}
+?>
+
     
     
