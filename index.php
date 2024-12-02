@@ -28,6 +28,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h1>MATH QUIZ</h1>
     </header>
     
+    <div class="form-container">
+        <form action="index.php" method="POST">
+            <fieldset>
+                <legend>Level</legend>
+                <label>
+                    <input type="radio" name="level" value="1-10" required>
+                    Level 1 (1-10) 
+                </label>
+                <label>
+                    <input type="radio" name="level" value="11-100" required>
+                    Level 2 (11-100) 
+                </label>
+                <label>
+                    <input type="radio" name="level" value="custom">
+                    Custom Level
+                    <input type="number" id="num1" name="num1" placeholder="Min" style="width:50px;">
+                    -
+                    <input type="number" id="num2" name="num2" placeholder="Max" style="width:50px;">
+                </label>
+            </fieldset>
+            
+        </form>
+    </div>
 </body>
 </html>
 
