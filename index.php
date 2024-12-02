@@ -48,6 +48,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="number" id="num2" name="num2" placeholder="Max" style="width:50px;">
                 </label>
             </fieldset>
+
+            <fieldset>
+                <legend>Operation</legend>
+
+                <label>
+                    <input type="radio" name="operator" value="add" required>
+                    Addition
+                </label>
+
+                <label>
+                    <input type="radio" name="operator" value="subtract" required>
+                    Subtraction
+                </label>
+
+                <label>
+                    <input type="radio" name="operator" value="multiply" required>
+                    Multiplication
+                </label>
+            </fieldset>
             
         </form>
     </div>
