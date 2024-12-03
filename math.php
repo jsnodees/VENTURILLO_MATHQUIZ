@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['level']) || !isset($_SESSION['operator']) || !isset($_SESSION['numItems']) || !isset($_SESSION['maxNum'])) {
-    header ("Location: index.php");
+    header("Location: index.php");
     exit();
 }
 
