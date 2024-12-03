@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['customMin'] = intval($_POST['num1']);
         $_SESSION['customMax'] = intval($_POST['num2']);
     }
-    header("Location: .php");
+    header("Location: math.php");
     exit();
 }
 ?>
