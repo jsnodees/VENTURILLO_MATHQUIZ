@@ -24,7 +24,7 @@ session_destroy();
     <p><strong>Wrong Answers:</strong> <?php echo $_SESSION['wrong']; ?></p>
     <p><strong>Your Grade:</strong> <?php echo $grade; ?>%</p>
 
-    <form action="mathy.php">
+    <form action="index.php">
         <button type="submit">Take Quiz Again</button>
     </form>
 </div>
