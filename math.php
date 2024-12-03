@@ -45,8 +45,8 @@ switch ($operator) {
         $symbol = '*';
         break;
     default:
-    $correctAnswer = 0;
-    $symbol = '?';
+        $correctAnswer = 0;
+        $symbol = '?';
 }
 
 $choices = [$correctAnswer];
@@ -59,13 +59,14 @@ while (count($choices) < 4) {
 shuffle($choices);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['answer']) && isset ($_POST['correctAnswer'])) {
+    if (isset($_POST['answer']) && isset($_POST['correctAnswer'])) {
         if (intval($_POST['answer']) === intval($_POST['correctAnswer'])) {
-            $_SESSION['correct'] ++;
+            $_SESSION['correct']++;
         } else {
-            $_SESSION['wrong'] ++;
+            $_SESSION['wrong']++;
         }
     }
+
     $_SESSION['currentQuestion']++;
     if ($_SESSION['currentQuestion'] > $numItems) {
         header("Location: end.php");
@@ -74,5 +75,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-    
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="math.css">
+    <title>Math Quiz</title>
+    <style>
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Math Quiz</h1>
+        <h2>Question <?php echo $_SESSION['currentQuestion']; ?> of <?php echo $numItems; ?></h2>
+    </header>
+
+    <div class="form-container">
+        <h2><?php echo "$num1 $symbol $num2 = ?"; ?></h2>
+        <form method="POST">
+            <input type="hidden" name="correctAnswer" value="<?php echo $correctAnswer; ?>">
+            <?php foreach ($choices as $choice): ?>
+                <button type="submit" name="answer" value="<?php echo $choice; ?>"><?php echo $choice; ?></button><br>
+            <?php endforeach; ?>
+        </form>
+
+        <fieldset>
+            <legend>Score</legend>
+            Correct: <?php echo $_SESSION['correct']; ?><br>
+            Wrong: <?php echo $_SESSION['wrong']; ?><br>
+        </fieldset>
+
+        <form method="POST" action="end.php">
+            <button type="submit" name="end">End Quiz</button>
+        </form>
+    </div>
+</body>
+</html>
